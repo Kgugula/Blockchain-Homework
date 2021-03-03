@@ -1,17 +1,26 @@
 # User Guide - Keiran's Custom Blockchain #
 
+## Layout
+
+    Introduction
+    Dependencies
+    Steps
+    gugulachain Information
+    Troubleshooting
+    Helpful Links
+
 ## Introduction ## 
 
-Hello and welcome to my custom built blockchain. Stored here is a step-by-step user guide for setting up your own private blockchain network, initializing nodes, and sending test transactions. First we are going to outline the required dependencies that you will need on your local machine to get all of this up and running, then jump right into the steps for how to setup your private blockchain. At the bottom of the page you can see the information pertaining to the blockchain I created throughout this example, some troubleshooting tips, and finally a couple of readings I found helpful along the way. I will include the 'gugulachain' relevant files/folders on my Github, so if would like to skip a couple of steps and try this on my network private network feel free to do so. Hope you enjoy!
+Hello and welcome to my custom built blockchain. Stored here is a step-by-step user guide for setting up your own private blockchain, initializing nodes, and sending test transactions. First we are going to outline the required dependencies that you will need on your local machine to get all of this up and running, then jump right into the steps for how to setup your private blockchain. At the bottom of the page you can find the information pertaining to the blockchain I created throughout this example, some troubleshooting tips, and finally a couple of readings I found helpful along the way. The 'gugulachain' files are included in the 'gugulachainFiles' repository, so if would like to skip a couple of steps and try this on my private network feel free to do so. Hope you enjoy!
 
 ## Dependencies ##
 
 You will need to download the MyCrypto App and GO Ethereum Tools. 
 
-MyCrypto is a free, open-source, client-side interface that allows you to interact directly with the blockchain. This interacting "directly" with the blockchain means you are not using a third-party provider (such as an exchange) to interact with the blockchain and manage your private key and funds. The implication that comes with this is that you are responsible for keeping your sensitive information safe (namely) your private key. If this gets lost there is no way to prove ownership of your account (and the funds in it). I would recommend reading more about MyCrypto on there website here: https://mycrypto.com/. Note that MyCrypto is an Ethereum Wallet Manager - you can only manage Ethereum-based tokens on it. For the purposes of this demonstration we will be using TestNet tokens which have no inherent value (but then again, neither does Dogecoin and it's valued at a couple billion dollars now). 
+MyCrypto is a free, open-source, client-side interface that allows you to interact directly with the blockchain. This interacting "directly" with the blockchain means you are not using a third-party provider (such as an exchange) to manage your private key (and by extension, your funds). The implication that comes with this is that you are responsible for keeping your sensitive information safe, (namely) your private key. If this gets lost there is no way to prove ownership of your account (and the funds in it). I would recommend reading more about MyCrypto on their website here: https://mycrypto.com/. Note that MyCrypto is an Ethereum Wallet Manager - you can only manage Ethereum-based tokens on it. For the purposes of this demonstration we will be using TestNet tokens which have no inherent value (but then again, neither does Dogecoin). 
 
 
-GO Ethereum Tools is open-source software written in the 'Go' programming language. These tools allow you to create your own blockchain, from creating a genesis block to mining tokens and making transactions. To download go to https://geth.ethereum.org/downloads/ and select the package relevant to your operating system. Select the newest version, and download the 'Geth & Tools' flavor of the package. I recommend creating a new directory on your local machine and moving the downloaded files there. Please feel free to read more about both dependecies on your own at the many available sources. A tutorial on both packages is somewhat out of scope for this project and so described here is more of a high-level overview. 
+GO Ethereum Tools is open-source software written in the 'Go' programming language. These tools allow you to create your own blockchain, from initializing a genesis block to mining tokens and making transactions. To download navigate to https://geth.ethereum.org/downloads/ and select the package relevant to your operating system. Select the newest version, and download the 'Geth & Tools' flavor of the package. I recommend creating a new directory on your local machine and moving the downloaded files there. Please feel free to read more about both dependecies on your own at the many available resources. A tutorial on both packages is somewhat out of scope for this project and so described here is more of a high-level overview. 
 
 ## Steps ##
 
@@ -19,7 +28,7 @@ GO Ethereum Tools is open-source software written in the 'Go' programming langua
 
 ### Step 1 ###
 
-    The first step is to initialize the first two nodes in your network. These nodes will be interacting with each other to mine transactions. In reality, your machine would represent just one node in a network containing many. For educational purposes, however, it is really helpful to see how these nodes interact in the blockchain, and by having two on your local machine you get somewhat of a bird's eye view. 
+    The first step is to initialize the first two nodes in your network. These nodes will be interacting with each other to mine transactions. In reality, your machine would represent just one node in a network containing many. For educational purposes, however, it is really helpful to see how these nodes interact on the blockchain, and by having two on your local machine you get somewhat of a bird's eye view. 
 
     After the relevant dependencies have been installed, navigate into the directory where the 'GO Ethereum Tools' are located. On my local they are in a folder called 'BlockchainTools.' From there, enter the two commands below into your terminal (Git bash on Windows). This will initialize the nodes on your network. 
 
@@ -42,7 +51,7 @@ GO Ethereum Tools is open-source software written in the 'Go' programming langua
 
     Select the option to create a new genesis block from scratch
 
-    Choose a consensus algorithm to use (I used proof-of-authority here, which I would recommend doing if you are following along, some of the finer details related to configuration are different for the proof-of-work algorithm). Essentially, proof-of-authority uses a nodes identity (i.e. your identity) as collateral in exchange for allowing you to validate blocks. I won't delve into too much detail here since folks on Medium have done a far superior job. There are some helpful links at the bottom of the page related to the POA consensus algorithm, and how it differs from the rest. 
+    Choose a consensus algorithm (I used proof-of-authority here, which I would recommend doing if you are following along, some of the finer details related to configuration are different for the proof-of-work algorithm). Essentially, proof-of-authority uses a nodes identity (i.e. your identity) as collateral in exchange for allowing you to validate blocks. I won't delve into too much detail here since the folks on Medium have done a far superior job. There are some helpful links at the bottom of the page related to the POA, and how it differs from the other popular consensus algorithm. 
 
     Enter how many seconds blocks should take to mine (Default is 15, just hit enter to select)
 
@@ -52,7 +61,7 @@ GO Ethereum Tools is open-source software written in the 'Go' programming langua
 
     You can choose 'no' for pre-funding the pre-compiled accounts with wei. This keeps the genesis cleaner. 
 
-    Specify your chain/network ID - if you want an explicit one (recommended - enter a three digit code of your choosing. Keep track of this code. You will need it when setting up your private network on MyCrypto). 
+    Specify your chain/network ID - if you want an explicit one (recommended) - enter a three digit code of your choosing. Keep track of this code. You will need it when setting up your private network on MyCrypto. 
 
     When back at the main page - select 'Manage Existing Genesis'
 
@@ -66,7 +75,7 @@ GO Ethereum Tools is open-source software written in the 'Go' programming langua
 
 ### Step 3 ###
 
-    With the genesis block creation complete, we will now initialize the nodes with the genesis' json file. Using geth, initialize each node with the new networkname.json, replacing networkname with the name of your network (make sure you are in your 'BlockchainTools' directory)
+    With the creation of the genesis block complete, we will now initialize the nodes with the genesis' json file. Using geth, initialize each node with the new networkname.json, replacing networkname with the name of your network (make sure you are in your 'BlockchainTools' directory)
 
         ./geth --datadir node1 init networkname.json
         ./geth --datadir node2 init networkname.json
@@ -75,7 +84,7 @@ GO Ethereum Tools is open-source software written in the 'Go' programming langua
 
 ### Step 4 ###
 
-    Now that the nodes are initialized, they can begin mining blocks on your network with a few simple commands. I hope you have an extra monitor for this step. Things might get hectic, just stay calm and read the instructions carefully. I recommend reading through the instructions related to Step 4 once in their entirety before manuevering so you know what the goal is. It is probably a good idea to open a separate work document or text editor as we will be copy and pasting a few things. 
+    Now that the nodes are initialized, they can begin mining blocks on your network with a few simple commands. I hope you have an extra monitor for this step. Things might get hectic, just stay calm and read the instructions carefully. I recommend reading through the instructions related to Step 4 once in their entirety before manuevering so you know what the goal is. It is probably a good idea to open a separate work document or text editor as we will be copying and pasting a few things. 
 
     Open two SEPERATE terminal windows. Navigate to your directory with the GO Ethereum Tools and your new json file (e.g. BlockchainTools)
 
@@ -87,7 +96,7 @@ GO Ethereum Tools is open-source software written in the 'Go' programming langua
     
     Once you do this, many lines of code will start populating your terminal (deep breath). From these lines of code, you will be looking for the ENODE address of your first node. This will be output near the beginning. Please see the accompanied screenshot titled 'Enode Grab.' Copy this address you will need it for the next step. 
 
-    Moving on to the terminal on the right side of your window (Node 2). Paste the following - replacing the SEALER_TWO_ADDRESS with the public address of Node 2, and replacing SEALER_ONE_ENODE_ADDRESS with the ENODE address copied from above. After entering, TYPE YOUR PASSWORD FROM STEP 1 and hit enter - even if you can't see it visually. 
+    Move on to the terminal on the right side of your window (Node 2). Paste the following - replacing the SEALER_TWO_ADDRESS with the public address of Node 2, and replacing SEALER_ONE_ENODE_ADDRESS with the ENODE address copied from above. After entering, TYPE YOUR PASSWORD FROM STEP 1 and hit enter - even if you can't see it visually. 
 
     ./geth --datadir node2 --unlock "SEALER_TWO_ADDRESS" --mine --port 30304 --bootnodes "enode://SEALER_ONE_ENODE_ADDRESS@127.0.0.1:30303" --ipcdisable --allow-insecure-unlock
 
@@ -109,7 +118,7 @@ GO Ethereum Tools is open-source software written in the 'Go' programming langua
 
 ### Step 6 ###
 
-    Now that we have created a custom network on MyCrypto, we are going to send a transaction between the two nodes. First make sure you are connected to your network created in Step 5.
+    Now that we have created a custom network on MyCrypto, we are going to send a transaction between the two nodes. First make sure you are connected to the network created in Step 5.
 
     Once on the MyCrypto homepage, it will ask you how you want to access your wallet. Select the option "Keystore File."  Then navigate to the keystore directory inside your Node 1 directory, select the file located there, provide your password when prompted and then click "Unlock." 
 
@@ -120,11 +129,11 @@ GO Ethereum Tools is open-source software written in the 'Go' programming langua
 
     Our final step involves sending funds from our first node to our second. The steps would be the same if you chose to do this the other way around. 
 
-    While in MyCrypto, navigate to the "View & Send" tab located on the left sidebar. Under "To Address" input the public address of Node 2. Enter an arbitrary amount of ETH to send (I recommend sending a larger amount so you will be able to see the change in your Node 1 account - e.g. 150,000). You can keep the transaction fee as is, or slide it left or right, it won't make too much of a difference. If this was the real "crypto world" you would increase the transaction fee (i.e. the fee paid to those who mine the block) to get the transaction done more quickly. Once all the required fields are populated - hit send. You should see a pop up near the bottom of your screen - see screenshot 'Hash.' 
+    While in MyCrypto, navigate to the "View & Send" tab located on the left sidebar. Under "To Address" input the public address of Node 2. Enter an arbitrary amount of ETH to send (I recommend sending a larger amount so you will be able to see the change in your Node 1 account - e.g. 150,000). You can keep the transaction fee as is, or slide it left or right, it won't make too much of a difference. If this was the real "crypto world" you would increase the transaction fee (i.e. the fee paid to those who mine the block) to get the transaction validated more quickly. Once all the required fields are populated - hit send. You should see a pop up near the bottom of your screen - see screenshot 'Hash.' 
 
     At this point your transaction has just been broadcast to the custom network (your network). The status of the transaction will show as "PENDING" until your nodes have successfully mined the block. You can view this by selecting "Check TX Status." There will be a unique hash number associated with transaction. You can copy this down if you like, but it's not necessary unless you have completed many many transaction and need it to distinguish one from another. See screenshot "Successful TX" for an example of what will appear when your transaction has been mined. 
     
-    This process of approving your transaction should take approximately the same amount of time you specified when you configuring your genesis block. Now is a really cool time to navigate back to your window with the two terminal tabs open. If you follow the lines of code after the transaction is sent you will see how a new block is mined in real time. 
+    This process of approving your transaction should take approximately the same amount of time you specified when you configured your genesis block. Now is a really cool time to navigate back to your window with the two terminal tabs open. If you follow the lines of code after the transaction is sent you will see how a new block is mined in real time. 
     
     There are two ways to check the status of your transaction. If you are already in your wallet, you can select "Recent Transactions" from the dropdown menu located in the middle of your screen. You can also click "TX Status" in the left sidebar and navigate to the dropdown there.  
 
@@ -166,7 +175,7 @@ GO Ethereum Tools is open-source software written in the 'Go' programming langua
 
     As always, restarting your computer is always a good failsafe. 
 
-    Helpful Links
+## Helpful Links ## 
 
         Github: https://github.com/ethereum/go-ethereum/issues
         Geth Documentation: https://geth.ethereum.org/docs/
@@ -178,18 +187,3 @@ GO Ethereum Tools is open-source software written in the 'Go' programming langua
 
 
     Happy Mining!
-
-Node1
-Public address of the key:   0x5A01CFb175607Ead94b1d838785b6a787E3cc8A1
-Path of the secret key file: node1/keystore/UTC--2021-02-24T21-56-18.388615000Z--5a01cfb175607ead94b1d838785b6a787e3cc8a1
-
-Node2
-Public address of the key:   0x3892471141C3D09B6612888f6B8F578055F9Fd19
-Path of the secret key file: node2/keystore/UTC--2021-02-24T21-56-58.750812000Z--3892471141c3d09b6612888f6b8f578055f9fd19
-
-chain/network id - 555
-
- ./geth --datadir node1 --unlock "0x5A01CFb175607Ead94b1d838785b6a787E3cc8A1" --mine --rpc --allow-insecure-unlock
-
- ./geth --datadir node2 --unlock "0x3892471141C3D09B6612888f6B8F578055F9Fd19" --mine --port 30304 --bootnodes "enode://3d6cba8b3a1fe23b342db40c91c64d6c60daff78e6f268bba652a9cbf4a672b2ff23151a4684d30340b9ece34376bcf4a1bcff09557fc1ef04e85be5da3e2561@127.0.0.1:30303
-" --ipcdisable --allow-insecure-unlock
