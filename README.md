@@ -1,4 +1,4 @@
-# Blockchain-Homework
+# Creating Custom Blockchain (gugulachain)
 
 ## Repository Layout
 
