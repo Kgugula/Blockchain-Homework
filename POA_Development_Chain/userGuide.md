@@ -60,7 +60,7 @@ GO Ethereum Tools is open-source software written in the 'Go' programming langua
 
     If you are already in your folder containing your BlockchainTools, then it will save them there by default (recommended). Hit enter to do so.
 
-    Do not freak out. You will see that it failed to create two of the files from the previous step. We do not need these because we are using a proof-of-authority (POA) algorithm. You can delete the networkname-harmony.json file. Your folder should look something like the picture seen on the Screenshots repository (re: Puppeth Configuration). 
+    Do not freak out. You will see that it failed to create two of the files from the previous step. We do not need these because we are using a proof-of-authority (POA) algorithm. You can delete the networkname-harmony.json file. Your folder should look something like the picture seen on the Screenshots repository (see Puppeth Configuration). 
 
     Congrats! You have just created your genesis block. Now as a bonus go and ask Elon Musk to tweet about it!
 
@@ -122,7 +122,7 @@ GO Ethereum Tools is open-source software written in the 'Go' programming langua
 
     While in MyCrypto, navigate to the "View & Send" tab located on the left sidebar. Under "To Address" input the public address of Node 2. Enter an arbitrary amount of ETH to send (I recommend sending a larger amount so you will be able to see the change in your Node 1 account - e.g. 150,000). You can keep the transaction fee as is, or slide it left or right, it won't make too much of a difference. If this was the real "crypto world" you would increase the transaction fee (i.e. the fee paid to those who mine the block) to get the transaction done more quickly. Once all the required fields are populated - hit send. You should see a pop up near the bottom of your screen - see screenshot 'Hash.' 
 
-    At this point your transaction has just been broadcast to the custom network (your network). The status of the transaction will show as "PENDING" until your nodes have successfully mined the block. You can view this by selecting "Check TX Status." There will be a unique hash number associated with transaction. You can copy this down if you like, but it's not necessary unless you have completed many many transaction and need it to distinguish one from another.
+    At this point your transaction has just been broadcast to the custom network (your network). The status of the transaction will show as "PENDING" until your nodes have successfully mined the block. You can view this by selecting "Check TX Status." There will be a unique hash number associated with transaction. You can copy this down if you like, but it's not necessary unless you have completed many many transaction and need it to distinguish one from another. See screenshot "Successful TX" for an example of what will appear when your transaction has been mined. 
     
     This process of approving your transaction should take approximately the same amount of time you specified when you configuring your genesis block. Now is a really cool time to navigate back to your window with the two terminal tabs open. If you follow the lines of code after the transaction is sent you will see how a new block is mined in real time. 
     
@@ -178,3 +178,18 @@ GO Ethereum Tools is open-source software written in the 'Go' programming langua
 
 
     Happy Mining!
+
+Node1
+Public address of the key:   0x5A01CFb175607Ead94b1d838785b6a787E3cc8A1
+Path of the secret key file: node1/keystore/UTC--2021-02-24T21-56-18.388615000Z--5a01cfb175607ead94b1d838785b6a787e3cc8a1
+
+Node2
+Public address of the key:   0x3892471141C3D09B6612888f6B8F578055F9Fd19
+Path of the secret key file: node2/keystore/UTC--2021-02-24T21-56-58.750812000Z--3892471141c3d09b6612888f6b8f578055f9fd19
+
+chain/network id - 555
+
+ ./geth --datadir node1 --unlock "0x5A01CFb175607Ead94b1d838785b6a787E3cc8A1" --mine --rpc --allow-insecure-unlock
+
+ ./geth --datadir node2 --unlock "0x3892471141C3D09B6612888f6B8F578055F9Fd19" --mine --port 30304 --bootnodes "enode://3d6cba8b3a1fe23b342db40c91c64d6c60daff78e6f268bba652a9cbf4a672b2ff23151a4684d30340b9ece34376bcf4a1bcff09557fc1ef04e85be5da3e2561@127.0.0.1:30303
+" --ipcdisable --allow-insecure-unlock
